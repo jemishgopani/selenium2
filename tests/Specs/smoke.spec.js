@@ -12,9 +12,6 @@ describe("Smoke tests:", function () {
         const [email, password] = this.browser.getShopifyPartnerCredentials();
         const expectedLoggedOutConfirmationMessage = "You have successfully logged out";
 
-        console.log(email)
-        console.log(password)
-
         await pages.loginPage.goTo();
         await pages.loginPage.fillLoginForm(email, password);
         await pages.homePage.verifyHomePageIsDisplayed();
