@@ -26,9 +26,13 @@ class LoginPage extends BasePage{
     }
     async fillLoginForm(username, password){
         await this.getEmailTextField().setText(username)
+        await this.browser.delay(2000)
         await this.getNextButton().click()
+        await this.browser.delay(2000)
         await this.getPasswordTextField().setText(password)
+        await this.browser.delay(2000)
         await this.getNextButton().click()
+        await this.browser.delay(2000)
     }
 }
 

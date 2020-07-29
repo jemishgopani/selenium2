@@ -32,17 +32,17 @@ class HomePage extends BasePage{
 
     async verifyHomePageIsDisplayed(){
         await this.getSearchInputField().verifyInputFieldIsDisplayed();
+        await this.browser.delay(2000);
     }
 
     async doLogout(){
-        await this.getMenuButton().click()
-        await this.getLogOutButton().click()
+        await this.getMenuButton().click();
+        await this.getLogOutButton().click();
+        await this.browser.delay(2000);
     }
 
     async getLoggedOutConfirmationMessage(){
-        const ssss = await this.getSuccessfullyLoggedOutTextView().getText()
-        console.log(ssss)
-        return await this.getSuccessfullyLoggedOutTextView().getText()
+        return await this.getSuccessfullyLoggedOutTextView().getText();
     }
 }
 

@@ -21,7 +21,9 @@ describe("Smoke tests:", function () {
         expect(actualLggedOutConfirmationMessage).to.equal(expectedLoggedOutConfirmationMessage);
     })
 
-    after(function () {
-        this.browser.close();
+    after(async function () {
+        console.log("----------PAGE SOURCE----------");
+        console.log(await this.browser.getPageSource());
+        await this.browser.close();
     });
 })

@@ -102,6 +102,7 @@ class Browser {
         console.info("WaitUntilElementEnabled");
         await this.driver.wait(until.elementIsVisible(element), this.testConfig.defaultElementTimeout);
         await this.driver.wait(until.elementIsEnabled(element), this.testConfig.defaultElementTimeout);
+        console.info(`Element: '${await element.getText()}' is enabled!`);
     }
 
     async waitUntilEnabled(selectorType, locator) {
@@ -157,6 +158,7 @@ class Browser {
         await this.waitUntilElementEnabled(element);
         console.info("sendKeys: " + text);
         await element.sendKeys(text);
+        console.info("sendKeys performed successfully!");
     }
 
     async getText(selectorType, locator) {
@@ -191,6 +193,10 @@ class Browser {
 
     async issueError(error) {
         await ProcessUtil.errorToPromiseError(error);
+    }
+
+    async getPageSource() {
+        return await this.driver.getPageSource();
     }
 }
 
