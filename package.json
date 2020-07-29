@@ -6,7 +6,9 @@
   "directories": {
     "test": "tests"
   },
-  "dependencies": {},
+  "dependencies": {
+    "chromedriver": "^84.0.1"
+  },
   "devDependencies": {
     "chai": "^4.2.0",
     "fs": "0.0.1-security",

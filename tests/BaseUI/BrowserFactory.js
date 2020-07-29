@@ -1,3 +1,4 @@
+require('chromedriver');
 const Browser = require("./Browser");
 const ConfigFactory = require("./ConfigFactory");
 const ProcessUtil = require("./ProcessUtil");
