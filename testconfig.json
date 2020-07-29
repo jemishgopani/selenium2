@@ -1,5 +1,5 @@
 {
-  "browser": "chrome",
+  "browser": "chromeheadless",
   "defaultElementTimeout": 30000,
   "defaultPageLoadTimeout": 60000,
   "defaultTestTimeout": 300000,
