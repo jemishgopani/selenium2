@@ -1,0 +1,5 @@
+diff: true
+color: true
+reporter: mochawesome
+retries: 0
+timeout: 1800000

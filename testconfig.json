@@ -1,0 +1,9 @@
+{
+  "browser": "chrome",
+  "defaultElementTimeout": 30000,
+  "defaultPageLoadTimeout": 60000,
+  "defaultTestTimeout": 300000,
+  "baseUrl": "https://pratik-test-automation2.myshopify.com",
+  "shopifyPartnerEmail": "pratik@kubric.io",
+  "shopifyPartnerPassword": "12qw!@QW"
+}
