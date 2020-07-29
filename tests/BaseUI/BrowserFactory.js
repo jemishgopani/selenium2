@@ -59,6 +59,7 @@ class BrowserFactory {
         options.addArguments("--test-type");
         options.addArguments("--incognito");
         options.addArguments("--headless");
+        options.addArguments("--disable-gpu");
         options.addArguments("--window-size=1920,1080");
 
         //Override the normal headless user agent string
