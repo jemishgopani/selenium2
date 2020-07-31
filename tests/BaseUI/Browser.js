@@ -1,7 +1,9 @@
+const fs = require("fs");
 const FileUtil = require("./FileUtil");
 const ConfigFactory = require("./ConfigFactory");
 const SelectorType = require("./SelectorType");
 const ProcessUtil = require("./ProcessUtil");
+const MochaUtil = require("./MochaUtil");
 const { WebDriver, until, By, WebElement, Key } = require("selenium-webdriver");
 
 
@@ -11,6 +13,7 @@ class Browser {
     //Constructor
     constructor(mochaContext, driver) {
         this.testConfig = ConfigFactory.getConfig();
+        this.mochaContext = mochaContext;
         this.driver = driver;
     }
 
@@ -184,6 +187,19 @@ class Browser {
         await this.ExecuteJavaScript("arguments[0].click();", element);
         console.info("clickJS() happened");
     }
+
+    //--------------SCREENSHOT CAPTURING--------------//
+    async captureScreenshot(imageName){
+        const screenshotDirectory = FileUtil.pathCombine(FileUtil.getCurrentDirectory(), "mochawesome-report", "screenshots");
+        FileUtil.createDirectory(screenshotDirectory);
+        const filePath = FileUtil.pathCombine(screenshotDirectory,  imageName);
+
+        this.driver.takeScreenshot().then(function(data) {
+            console.info("Capturing screenshot...");
+            fs.writeFileSync(filePath, data, "base64");
+        });
+    }
+
 
     //----------------MISC. FUNCTIONS-----------------//
     async executeJavaScript(javaScript, args) {

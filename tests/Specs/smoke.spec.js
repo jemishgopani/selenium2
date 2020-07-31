@@ -17,9 +17,16 @@ describe("Smoke tests:", function () {
         await pages.homePage.verifyHomePageIsDisplayed();
         await pages.homePage.doLogout();
 
-        const actualLggedOutConfirmationMessage = await pages.homePage.getLoggedOutConfirmationMessage();
-        expect(actualLggedOutConfirmationMessage).to.equal(expectedLoggedOutConfirmationMessage);
+        const actualLoggedOutConfirmationMessage = await pages.homePage.getLoggedOutConfirmationMessage();
+        expect(actualLoggedOutConfirmationMessage).to.equal(expectedLoggedOutConfirmationMessage);
     })
+
+    afterEach(function() {
+        if (this.currentTest.state !== "passed") {
+            const imageFileName = this.currentTest.title+'.jpeg';
+            this.browser.captureScreenshot(imageFileName);
+        }
+    });
 
     after(async function () {
         console.log("----------PAGE SOURCE----------");

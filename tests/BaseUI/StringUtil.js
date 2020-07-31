@@ -1,6 +1,10 @@
 class StringUtil {
+    static regExEscape(text) {
+        return text.replace(/[-[\]{}()*+!<=:?.\/\\^$|#\s,]/g, "\\$&");
+    }
+
     static trimEnd(text, textToTrim) {
-        textToTrim = this.RegExEscape(textToTrim);
+        textToTrim = this.regExEscape(textToTrim);
         return text.replace(new RegExp("[" + textToTrim + "]+$"), "");
     }
 
