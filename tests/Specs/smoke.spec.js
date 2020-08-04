@@ -1,12 +1,12 @@
-const AllPages = require('./../Pages/AllPages')
-const BrowserFactory = require('./../BaseUI/BrowserFactory')
-const { expect } = require('chai')
+const AllPages = require('./../Pages/AllPages');
+const BrowserFactory = require('./../BaseUI/BrowserFactory');
+const { expect } = require('chai');
 
 describe("Smoke tests:", function () {
     before(async function () {
         this.browser = await BrowserFactory.createBrowser(this);
         pages = new AllPages(this.browser);
-    })
+    });
 
     it("Verify valid user should able to login and logout", async function () {
         const [email, password] = this.browser.getShopifyPartnerCredentials();
@@ -19,7 +19,7 @@ describe("Smoke tests:", function () {
 
         const actualLoggedOutConfirmationMessage = await pages.homePage.getLoggedOutConfirmationMessage();
         expect(actualLoggedOutConfirmationMessage).to.equal(expectedLoggedOutConfirmationMessage);
-    })
+    });
 
     afterEach(function() {
         if (this.currentTest.state !== "passed") {
@@ -33,4 +33,4 @@ describe("Smoke tests:", function () {
         console.log(await this.browser.getPageSource());
         await this.browser.close();
     });
-})
+});

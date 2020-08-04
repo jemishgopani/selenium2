@@ -17,7 +17,7 @@ class TestConfig {
     defaultPageLoadTimeout;
     defaultTestTimeout;
     shopifyPartnerEmail;
-    shopifyPartnerPassword
+    shopifyPartnerPassword;
 }
 
-module.exports = TestConfig
+module.exports = TestConfig;

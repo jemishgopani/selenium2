@@ -1,7 +1,8 @@
-const BasePage = require('./BasePage')
-const SelectorType = require('./../BaseUI/SelectorType')
-const TextInput = require('./../BaseUI/Components/TextInput')
-const Button = require('./../BaseUI/Components/Button')
+const BasePage = require('./BasePage');
+const SelectorType = require('./../BaseUI/SelectorType');
+const TextInput = require('./../BaseUI/Components/TextInput');
+const Button = require('./../BaseUI/Components/Button');
+const RecaptchaSolver = require('../BaseUI/RecaptchaSolver');
 
 class LoginPage extends BasePage{
     constructor(browser) {
@@ -24,15 +25,25 @@ class LoginPage extends BasePage{
     getBaseUrl(){
         return this.url;
     }
+
+    async enableNextButton(){
+        await this.browser.executeJavaScript("document.querySelector('button[name=commit]').removeAttribute('disabled')", null);
+    }
+
     async fillLoginForm(username, password){
-        await this.getEmailTextField().setText(username)
-        await this.browser.delay(2000)
-        await this.getNextButton().click()
-        await this.browser.delay(2000)
-        await this.getPasswordTextField().setText(password)
-        await this.browser.delay(2000)
-        await this.getNextButton().click()
-        await this.browser.delay(2000)
+        const recaptchaSolver = new RecaptchaSolver(this.browser);
+        await this.getEmailTextField().setText(username);
+        await this.browser.delay(2000);
+        await recaptchaSolver.solve();
+        await this.enableNextButton();
+        await this.getNextButton().click();
+        await this.browser.delay(2000);
+        await this.getPasswordTextField().setText(password);
+        await this.browser.delay(2000);
+        await recaptchaSolver.solve();
+        await this.enableNextButton();
+        await this.getNextButton().click();
+        await this.browser.delay(2000);
     }
 }
 
