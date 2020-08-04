@@ -16,6 +16,10 @@ jobs:
             - run: git clone git@github.com:jemishgopani/selenium2.git
             - run: cd selenium2/; ls ; npm install ; npm test
 
+      - store_artifacts:
+          path: selenium2/screenshots/
+
+
 workflows:
   build-and-test:
     jobs:
