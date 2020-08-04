@@ -17,7 +17,7 @@ jobs:
             - run: cd selenium/; ls ; npm install ; npm test
 
       - store_artifacts:
-         path: screenshots/
+          path: screenshots/
   ​
 workflows:
   build-and-test:
