@@ -1,0 +1,25 @@
+version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.0.1
+  node: circleci/node@1.1.6
+jobs:
+  build-and-test:
+    executor:
+      name: node/default
+    steps:
+      - browser-tools/install-chrome
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm install
+            - run: echo 'done--'
+            - run: git clone git@github.com:jemishgopani/selenium.git
+            - run: cd selenium/; ls ; npm install ; npm test
+
+      - store_artifacts:
+         path: screenshots/
+  ​
+workflows:
+  build-and-test:
+    jobs:
+      - build-and-test
