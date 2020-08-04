@@ -36,7 +36,7 @@ class RecaptchaSolver {
             });
         });
         console.log('----token---->', token);
-        await this.browser.executeJavaScript(`document.getElementById("g-recaptcha-response-100000").innerHTML="${token}"`, null)
+        await this.browser.executeJavaScript(`document.getElementById("g-recaptcha-response").innerHTML="${token}"`, null)
     }
 }
 
